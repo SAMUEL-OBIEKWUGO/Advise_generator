@@ -1,0 +1,49 @@
+#body{
+  background-color: hsl(217, 19%, 16%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+
+#advise{
+  color: hsl(150, 100%, 66%);
+  background-color: hsl(217, 19%, 24%);
+  width: 100%;
+  border-radius: .5rem;
+  padding: 10px 10px;
+  text-align: center;
+  position: relative;
+  max-width: 400px;
+}
+
+#advise p{
+  color: white;
+  text-align: center;
+}
+
+button{
+  background-color: hsl(150, 100%, 66%);
+  border-radius: 90px;
+  position: relative;
+  top: 2rem;
+}
+
+#dice img{
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (max-width: 320px) {
+  #advise{
+    width: 80vw;
+  }
+
+  #pattern{
+    width: 80vw;
+  }
+
+  p{
+    text-align: center;
+  }
+}
