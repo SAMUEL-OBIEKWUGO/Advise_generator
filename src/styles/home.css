@@ -36,16 +36,27 @@ button{
   height: 2rem;
 }
 
+#patternMobile{
+  display: none;
+}
+
 @media (max-width: 320px) {
   #advise{
     width: 80vw;
   }
 
   #pattern{
-    width: 80vw;
+    display: none;
   }
 
-  p{
+  #patternMobile{
+    display: block;
+    width: 100%;
+  }
+
+  #advise p{
     text-align: center;
+    position: relative;
+    left: 1rem;
   }
 }

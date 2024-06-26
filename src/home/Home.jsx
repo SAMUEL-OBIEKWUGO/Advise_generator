@@ -1,24 +1,45 @@
 // import React from 'react'
 import "../styles/home.css"
 import pattern from "../assets/pattern-divider-desktop.svg"
+import patternMobile from "../assets/pattern-divider-mobile.svg"
 import dice from "../assets/icon-dice.svg"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Home = () => {
-   const [isToggled, setisToggled] = useState(false)
+  const [data,setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
    const  handleClick = ()=>{
-      setisToggled(prevState => !prevState);
+      window.location.reload();
    };
+
+   useEffect(()=>{
+    fetch('https://api.adviceslip.com/advice')
+    .then((response)=>{
+      if(!response.ok){
+        throw new Error('Network is bad');
+      }
+      return response.json()
+    })
+    .then((data)=>{
+      setData(data);
+      setIsLoading(false);
+    })
+    .catch((error)=>{
+      setError(error);
+      setIsLoading(false)
+    })
+   }, [])
 
   return (
    <>
    <main id='body'>
     <div id="advise">
       <h2 className="advise">ADVISE #117</h2>
-      
-      <p>{isToggled ? `"It is easy to sit up and take notice, what's difficult is getting up and taking action."`:`"It is easy to have big dreams, but what's challenging is turning those dreams into reality."`}</p>
-      {/* <p>{text}</p> */}
+      <p>{JSON.stringify(data)}</p>
       <img src={pattern} alt="" width={390} id="pattern"/>
+      <img src={patternMobile} alt="" id="patternMobile"/>
       <button id="dice" onClick={handleClick}>
       <img src={dice} alt=""/>
       </button>
